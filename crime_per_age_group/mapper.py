@@ -8,15 +8,18 @@ for line in sys.stdin:
     crime_type = fields[9]  # Crm Cd Desc (Crime Type)
 
     # Categorize victim age into age groups
-    age = int(vict_age)
-    if age < 18:
-        age_group = "Under_18"
-    elif age < 35:
-        age_group = "18_34"
-    elif age < 60:
-        age_group = "35_59"
-    else:
-        age_group = "60_plus"
+    try:
+        age = int(vict_age)
+        if age < 18:
+            age_group = "Under_18"
+        elif age < 35:
+            age_group = "18_34"
+        elif age < 60:
+            age_group = "35_59"
+        else:
+            age_group = "60_plus"
+    except ValueError:
+        age_group = "Unknown"
 
     # Emit key-value pair (Crime Type, Age Group)
     if crime_type and crime_type != "Crm Cd Desc":
