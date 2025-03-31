@@ -18,4 +18,6 @@ for line in sys.stdin:
     else:
         age_group = "60_plus"
 
-    print(f"{crime_type}\t{age_group}")
+    # Emit key-value pair (Crime Type, Age Group)
+    if crime_type and crime_type != "Crm Cd Desc":
+        print(f"{crime_type}\t{age_group}")
